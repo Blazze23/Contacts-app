@@ -1,0 +1,108 @@
+* {
+    font-family: "Poppins", sans-serif;
+    color: #0e3854;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right top, #067eed, #c1e6ff );
+    background-repeat: no-repeat;
+}
+
+nav, .navbar-light .navbar-nav .nav-link{
+    color: #0e3854 !important;
+    font-weight: 600 !important;
+}
+
+nav, .navbar-light .navbar-nav .nav-item a.nav-link:hover{
+    color: #ff7c1f !important;
+}
+
+
+nav, .navbar, .dropdown-menu{
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(10px);
+}
+nav, .navbar, .dropdown-menu,.dropdown-item{
+   color: #0e3854;
+}
+nav, .navbar, .dropdown-menu,.dropdown-item:hover{
+    color: #ff7c1f;
+    font-weight: 600;
+    background-color:transparent;
+    
+ }
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+i.logo{
+    color: #ff7c1f;
+}
+
+.intro {
+    background: white;
+    width: 60%;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.login {
+    width: 60% !important;
+}
+
+.glass {
+    background: white;
+    min-height: 80vh;
+    width: 80%;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+
+}
+.glass-profile {
+    background: white;
+    min-height: 80vh;
+    width: 90%;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+
+}
+
+.circle1,.circle2,.circle3 {
+   background: #ff7c1f;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+}
+.circle1 {
+    height: 30vw;
+    width: 30vw;
+    top: 5%;
+    left: 9%;
+}
+.circle2 {
+    height: 35vw;
+    width: 35vw;
+    top: 35%;
+    right: 8%;
+}
+.circle3 {
+    height: 20vw;
+    width: 20vw;
+    top: 75%;
+    left: 5%;
+}
+
+#logout {
+    cursor: pointer;
+}
+
+#btn_izmeniKontakt, #btnOwnerContacts {
+    color: #0e3854;
+}
