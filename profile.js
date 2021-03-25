@@ -3,7 +3,7 @@ let public_info;
 let image = "";
 const polja = $("form input");
 function ucitajKorisnika() {
-    $.getJSON("http://obrada.in.rs/api/korisnikInfo/"+token, function(data) {
+    $.getJSON("https://obrada.in.rs/api/korisnikInfo/"+token, function(data) {
         console.log(data);
        $("#id_info").val(data[0].id);
        $("#username_info").val(data[0].username);
@@ -13,7 +13,7 @@ function ucitajKorisnika() {
        if(data[0].img.length == 0) {
            $("#profilePicture").attr("src", "img/user.jpg");
        } else {
-            $("#profilePicture").attr("src", "http://obrada.in.rs/api/"+data[0].img);
+            $("#profilePicture").attr("src", "https://obrada.in.rs/api/"+data[0].img);
        }
        let public = parseInt(data[0].public);
        public_info = public;
@@ -35,7 +35,7 @@ function changePrivacy() {
     } else {
         var prosledi = 0;
     }
-    $.getJSON("http://obrada.in.rs/api/deljenjeKorisnik/"+token+"/"+prosledi, function(data) {
+    $.getJSON("https://obrada.in.rs/api/deljenjeKorisnik/"+token+"/"+prosledi, function(data) {
         // console.log(data);
         if(data.sifra == 0) {
             swal.fire("Greska", data.poruka, "error");
@@ -75,7 +75,7 @@ function changePassword() {
     }
     const lozinka = new Password(oldpasswod, newpassword);
     const json_lozinka = JSON.stringify(lozinka);
-    $.post( "http://obrada.in.rs/api/izmeniLozinku/"+token, json_lozinka, function( data ) {
+    $.post( "https://obrada.in.rs/api/izmeniLozinku/"+token, json_lozinka, function( data ) {
         if(data.sifra == 0) {
          swal.fire("Greska", data.poruka, "error");
         } else {
@@ -130,7 +130,7 @@ function changePhoto() {
     } else {
         const photo = new Photo(image);
         const json_slika = JSON.stringify(photo);
-        $.post("http://obrada.in.rs/api/dodajSliku/"+token, json_slika, function(data) {
+        $.post("https://obrada.in.rs/api/dodajSliku/"+token, json_slika, function(data) {
             if(data.sifra == 0) {
                 Swal.fire("Error", data.poruka, "error");
             } else {

@@ -23,7 +23,7 @@ function dodajKontakt() {
   const kontakt = new Kontakt(imeiprezime, telefon);
   const json_kontakt = JSON.stringify(kontakt);
   $.post(
-    "http://obrada.in.rs/api/dodajKontakt/" + token,
+    "https://obrada.in.rs/api/dodajKontakt/" + token,
     json_kontakt,
     function (data) {
       console.log(data);
@@ -58,7 +58,7 @@ $("#telefon").keyup(function (event) {
 });
 
 function ucitajKontakte() {
-  $.get("http://obrada.in.rs/api/ucitajKontakte/" + token, function (data) {
+  $.get("https://obrada.in.rs/api/ucitajKontakte/" + token, function (data) {
     console.log(data);
     $("#imenik").empty();
     if (data.length == 0) {
@@ -86,7 +86,7 @@ function ucitajKontakte() {
 
 function obrisiKontakt(id) {
   $.get(
-    "http://obrada.in.rs/api/obrisiKontakt/" + token + "/" + id,
+    "https://obrada.in.rs/api/obrisiKontakt/" + token + "/" + id,
     function (data) {
       console.log(data);
       if (data.sifra == 0) {
@@ -114,7 +114,7 @@ function obrisiKontakt(id) {
 
 function spremiIzmenu(id) {
     $("#contactModal").modal("show");
-  $.get("http://obrada.in.rs/api/kontaktInfo/"+token+"/"+id, function(data) {
+  $.get("https://obrada.in.rs/api/kontaktInfo/"+token+"/"+id, function(data) {
        console.log(data);
        $("#imeiprezime_izmena").val(data.imeiprezime);
        $("#telefon_izmena").val(data.telefon);
@@ -161,7 +161,7 @@ function izmeniKontakt() {
     const kontakt = new Kontakt($("#imeiprezime_izmena").val(), $("#telefon_izmena").val());
     const json_kontakt = JSON.stringify(kontakt);
     if(kontakt_izmena_id != 0) {
-        $.post("http://obrada.in.rs/api/izmeniKontakt/"+token+"/"+kontakt_izmena_id, json_kontakt, function(data) {
+        $.post("https://obrada.in.rs/api/izmeniKontakt/"+token+"/"+kontakt_izmena_id, json_kontakt, function(data) {
             console.log(data);
             if(data.sifra == 0) {
                 swal.fire("Greska", data.poruka, "error");
@@ -184,7 +184,7 @@ $("#telefon_izmena").keyup(function(event) {
 // function spremiIzmenu3(id) {
 //   $("#contactModal").modal("show");
 //   $.get(
-//     "http://obrada.in.rs/api/kontaktInfo/" + token + "/" + id,
+//     "https://obrada.in.rs/api/kontaktInfo/" + token + "/" + id,
 //     function (data) {
 //       console.log(data);
 //       $("#imeiprezime_izmena").val(data.imeiprezime);
@@ -226,7 +226,7 @@ $("#telefon_izmena").keyup(function(event) {
 //   );
 //   const json_kontakt = JSON.stringify(kontakt);
 //   $.post(
-//     "http://obrada.in.rs/api/izmeniKontakt/" + token + "/" + id,
+//     "https://obrada.in.rs/api/izmeniKontakt/" + token + "/" + id,
 //     json_kontakt,
 //     function (data) {
 //       console.log(data);

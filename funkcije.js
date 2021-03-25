@@ -9,7 +9,7 @@ function proveriToken() {
     if(token == null) {
         logout();
     } else {
-        $.get("http://obrada.in.rs/api/proveriToken/"+token, function(data) {
+        $.get("https://obrada.in.rs/api/proveriToken/"+token, function(data) {
             if(data.sifra == 0) {
                 logout();
             }

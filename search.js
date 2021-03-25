@@ -17,7 +17,7 @@ function checkPrivacy() {
 
 function ucitajKontakte() {
     if(privacy != 0) {
-        $.getJSON("http://obrada.in.rs/api/sviKontakti/"+token, function(data) {
+        $.getJSON("https://obrada.in.rs/api/sviKontakti/"+token, function(data) {
             console.log(data);
             $("#kontakti").empty();
             if (data.length == 0) {
@@ -42,7 +42,7 @@ function ucitajKontakte() {
 }
 
 function ownerInfo(id) {
-    $.getJSON("http://obrada.in.rs/api/korisnikInfo/"+token+"/"+id, function(data) {
+    $.getJSON("https://obrada.in.rs/api/korisnikInfo/"+token+"/"+id, function(data) {
         console.log(data);
         $("#ownerInfo").modal("show");
         if(data.korisnik.img == "") {
@@ -107,7 +107,7 @@ function pretraga2(br_tel) {
     if(br_tel == 0) {
         ucitajKontakte();
     } else {
-        $.getJSON("http://obrada.in.rs/api/ucitajKontakteSearch/"+token+"/"+br_tel, function(data) {
+        $.getJSON("https://obrada.in.rs/api/ucitajKontakteSearch/"+token+"/"+br_tel, function(data) {
            $("table tbody").empty();
            $.each(data, function(key, value) {
                $("table tbody").append("<tr class='text-center'><td>"+value.imeiprezime+"</td><td>"+value.telefon+"</td><td>"+value.username+"</td><td><button class='btn btn-warning btn-sm' style='color: #0e3854' onclick='ownerInfo(" +

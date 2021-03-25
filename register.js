@@ -37,7 +37,7 @@ function registracija() {
    const korisnik = new Korisnik(username, email, password);
    const json_korisnik = JSON.stringify(korisnik);
 
-   $.post( "http://obrada.in.rs/api/registracija", json_korisnik, function( data ) {
+   $.post( "https://obrada.in.rs/api/registracija", json_korisnik, function( data ) {
    if(data.sifra == 0) {
     swal.fire("Greska", data.poruka, "error");
    } else {
