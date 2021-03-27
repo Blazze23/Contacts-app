@@ -38,7 +38,7 @@ function changePrivacy() {
     $.getJSON("https://obrada.in.rs/api/deljenjeKorisnik/"+token+"/"+prosledi, function(data) {
         // console.log(data);
         if(data.sifra == 0) {
-            swal.fire("Greska", data.poruka, "error");
+            swal.fire("Error", "Something went wrong...", "error");
             return false;
         }
         localStorage.setItem("public", prosledi);
@@ -66,7 +66,7 @@ function changePassword() {
     const newpassword = $("#newpassword").val();
     const rptpassword = $("#rptpassword").val();
     if(newpassword != rptpassword) {
-        swal.fire("Oops...", "Passwords do not match", "error");
+        swal.fire("Error", "Passwords do not match", "error");
         polja[1].classList.remove("is-valid");
         polja[2].classList.remove("is-valid");
         polja[1].classList.add("is-invalid");
@@ -77,9 +77,9 @@ function changePassword() {
     const json_lozinka = JSON.stringify(lozinka);
     $.post( "https://obrada.in.rs/api/izmeniLozinku/"+token, json_lozinka, function( data ) {
         if(data.sifra == 0) {
-         swal.fire("Greska", data.poruka, "error");
+         swal.fire("Error", "Something went wrong...", "error");
         } else {
-            swal.fire("Info", data.poruka, "success");
+            swal.fire("Info", "You have successfully changed password!", "success");
             ocisti();
         }
        }); 
@@ -132,9 +132,9 @@ function changePhoto() {
         const json_slika = JSON.stringify(photo);
         $.post("https://obrada.in.rs/api/dodajSliku/"+token, json_slika, function(data) {
             if(data.sifra == 0) {
-                Swal.fire("Error", data.poruka, "error");
+                Swal.fire("Error", "Something went wrong...", "error");
             } else {
-                Swal.fire("Info", data.poruka, "success");
+                Swal.fire("Info", "You have successfully changed your profile picture!", "success");
                 ucitajKorisnika();
                 $("#profileModal").modal("hide");
                 image = "";

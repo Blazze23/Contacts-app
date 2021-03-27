@@ -22,7 +22,7 @@ function login() {
   $.post("https://obrada.in.rs/api/login", json_korisnik, function(data) {
     
      if(data.sifra == 0) {
-        swal.fire("Greska", data.poruka, "error");
+        swal.fire("Error", "Something went wrong...", "error");
      } else {
          localStorage.setItem("token", data.token);
          localStorage.setItem("username", data.korisnik.username);

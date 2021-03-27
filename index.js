@@ -28,9 +28,9 @@ function dodajKontakt() {
     function (data) {
       console.log(data);
       if (data.sifra == 0) {
-        swal.fire("Greska", data.poruka, "error");
+        swal.fire("Error", "Something went wrong...", "error");
       } else {
-        swal.fire("Info", data.poruka, "success");
+        swal.fire("Info", "You have successfully added new contact!", "success");
         ocisti();
         ucitajKontakte();
       }
@@ -90,9 +90,9 @@ function obrisiKontakt(id) {
     function (data) {
       console.log(data);
       if (data.sifra == 0) {
-        swal.Fire("Greska", data.poruka, "error");
+        swal.Fire("Error", "Something went wrong...", "error");
       } else {
-        swal.fire("Info", data.poruka, "success");
+        swal.fire("Info", "You have successfully removed contact!", "success");
         ucitajKontakte();
       }
     }
@@ -164,10 +164,10 @@ function izmeniKontakt() {
         $.post("https://obrada.in.rs/api/izmeniKontakt/"+token+"/"+kontakt_izmena_id, json_kontakt, function(data) {
             console.log(data);
             if(data.sifra == 0) {
-                swal.fire("Greska", data.poruka, "error");
+                swal.fire("Error", "Something went wrong...", "error");
             } else {
                 $("#contactModal").modal("hide");
-                swal.fire("Info", data.poruka, "success");
+                swal.fire("Info", "You have successfully edited contact!", "success");
                 ucitajKontakte();
                 posleIzmene();
             }
@@ -231,10 +231,10 @@ $("#telefon_izmena").keyup(function(event) {
 //     function (data) {
 //       console.log(data);
 //       if (data.sifra == 0) {
-//         swal.fire("Greska", data.poruka, "error");
+//         swal.fire("Error", "Something went wrong...", "error");
 //       } else {
 //         $("#contactModal").modal("hide");
-//         swal.fire("Info", data.poruka, "success");
+//         swal.fire("Info", "You have successfully edited contact!", "success");
 //         ucitajKontakte();
 //       }
 //     }

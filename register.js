@@ -39,9 +39,9 @@ function registracija() {
 
    $.post( "https://obrada.in.rs/api/registracija", json_korisnik, function( data ) {
    if(data.sifra == 0) {
-    swal.fire("Greska", data.poruka, "error");
+    swal.fire("Error", "Something went wrong...", "error");
    } else {
-       swal.fire("Info", data.poruka, "success");
+       swal.fire("Info", "You have successfully registered.", "success");
        ocisti();
    }
   }); 
