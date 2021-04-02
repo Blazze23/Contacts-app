@@ -34,6 +34,10 @@
       src="https://kit.fontawesome.com/112c77d41f.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-0lyEd9PgJGuHO68ev3s50Vbpky_UUkU&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
     <script src="profile.js" defer></script>
     <script src="funkcije.js" defer></script>
     <title>Contacts | Profile</title>
@@ -156,6 +160,9 @@
               <label for="contacts_number" class="form-label">Number of contacts:</label>
               <input type="text" class="form-control" placeholder="Number of contacts..." id="contacts_number" disabled>
             </div>
+            <!-- Mapa -->
+            <h2 class="text-center mt-5 mb-5">My Location</h2>
+            <div id="map"></div>
           </div>
         </div>
       </section>

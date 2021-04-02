@@ -45,7 +45,7 @@ i.logo{
 
 .intro {
     background: white;
-    width: 60%;
+    width: 80%;
     background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
     border-radius: 25px;
     backdrop-filter: blur(10px);
@@ -106,3 +106,8 @@ i.logo{
 #btn_izmeniKontakt, #btnOwnerContacts {
     color: #0e3854;
 }
+
+#map {
+    height: 300px;
+    border-radius: 25px;
+  }

@@ -1,3 +1,7 @@
+$(document).ready(function($) {
+    initMap();
+});
+
 const token = localStorage.getItem("token");
 let public_info;
 let image = "";
@@ -25,6 +29,9 @@ function ucitajKorisnika() {
         $("#privacy").addClass("alert-success");
         $("#privacy").removeClass("alert-danger");
         $("#privacy").html("<i class='fas fa-eye pe-2'></i><b>Public</b>");
+       }
+       if(data[0].lat !=0) {
+           setMarker(data[0].lat, data[0].lon);
        }
     });
 }
@@ -144,3 +151,69 @@ function changePhoto() {
         })
     }
 }
+
+// Google Maps
+
+let map;
+let marker;
+
+
+      function initMap() {
+        let lokacija = { lat: 44.8154033, lng: 20.2825132 };
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: lokacija,
+          zoom: 9,
+        });
+
+        // map.addListener("click", () => {
+        //     // 3 seconds after the center of the map has changed, pan back to the
+        //     // marker.
+        //    alert("Clicked")
+        //   });
+
+          google.maps.event.addListener(map, "click", (event)=> {
+              console.log(event.latLng.lat(), event.latLng.lng());
+              setMarker(event.latLng.lat(), event.latLng.lng(), 1);
+          });
+      }
+
+      function postaviCentar(lat, lon) {
+        let lokacija = new google.maps.LatLng(lat, lon);
+          map.setCenter(lokacija);
+      }
+
+      function setMarker(lat, lon, listener=0) {
+            let lokacija = new google.maps.LatLng(lat, lon);
+            if(marker == null) {
+                marker = new google.maps.Marker({
+                    position: lokacija,
+                    map: map,
+                    title: "Smiley location"
+                });
+            } else {
+                marker.setPosition(lokacija);
+            }
+            if(listener != 0) {
+                izmeniLokaciju(lat, lon);
+            } else {
+                postaviCentar(lat, lon);
+            }
+      }
+
+      function Lokacija(lat, lon) {
+        this.lat = lat;
+        this.lon = lon;
+      }
+
+      function izmeniLokaciju(lat, lon) {
+
+        let lokacija = new Lokacija(lat, lon);
+        let json_lokacija = JSON.stringify(lokacija);
+        $.post( "https://obrada.in.rs/api/dodajLokaciju/"+token, json_lokacija, function( data ) {
+            if(data.sifra == 0) {
+             swal.fire("Error", "Something went wrong...", "error");
+            } else {
+                swal.fire("Info", "Your location has been successfully set", "success");
+            }
+           }); 
+      }

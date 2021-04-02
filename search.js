@@ -1,3 +1,7 @@
+$(document).ready(function($) {
+    initMap();
+});
+
 const privacy = localStorage.getItem("public");
 const token = localStorage.getItem("token");
 let kontaktiKorisnika = [];
@@ -17,6 +21,7 @@ function checkPrivacy() {
 
 function ucitajKontakte() {
     if(privacy != 0) {
+        ucitajLokacijeKorisnika();
         $.getJSON("https://obrada.in.rs/api/sviKontakti/"+token, function(data) {
             console.log(data);
             $("#kontakti").empty();
@@ -117,3 +122,57 @@ function pretraga2(br_tel) {
         });
     }  
 } 
+
+// Google Maps
+
+let map;
+let markers = [];
+
+      function initMap() {
+        let lokacija = { lat: 44.8154033, lng: 20.2825132 };
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: lokacija,
+          zoom: 4,
+        });
+      }
+
+function postaviMarker(lat, lon, id) {
+    let lokacija = new google.maps.LatLng(lat, lon);
+    let marker = new google.maps.Marker({
+        position: lokacija,
+        map: map,
+        title: id
+    });
+    markers.push(marker);
+}
+
+function ucitajLokacijeKorisnika() {
+    $.getJSON("http://obrada.in.rs/api/korisniciInfoLokacija/"+token, function(data) {
+       $.each(data, function(key, value) {
+           if(value.lat != 0) {
+               postaviMarker(value.lat, value.lon, value.id);
+           }
+       });
+    });
+}
+
+// MAP korisne funkcije !!!
+
+function setMapOnAll(map) {
+    for(let i = 0; i<markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+function showMarkers() {
+    setMapOnAll(map);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+}
