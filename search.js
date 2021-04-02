@@ -53,7 +53,7 @@ function ownerInfo(id) {
         if(data.korisnik.img == "") {
             $("#ownerImg").attr("src", "img/user.jpg");
         } else {
-            $("#ownerImg").attr("src", "http://obrada.in.rs/api/"+data.korisnik.img);
+            $("#ownerImg").attr("src", "https://obrada.in.rs/api/"+data.korisnik.img);
         }
         $("#ownerUsername").val(data.korisnik.username);
         $("#ownerEmail").val(data.korisnik.email);
@@ -147,7 +147,7 @@ function postaviMarker(lat, lon, id) {
 }
 
 function ucitajLokacijeKorisnika() {
-    $.getJSON("http://obrada.in.rs/api/korisniciInfoLokacija/"+token, function(data) {
+    $.getJSON("https://obrada.in.rs/api/korisniciInfoLokacija/"+token, function(data) {
        $.each(data, function(key, value) {
            if(value.lat != 0) {
                postaviMarker(value.lat, value.lon, value.id);
