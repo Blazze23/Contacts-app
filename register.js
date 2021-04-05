@@ -43,6 +43,7 @@ function registracija() {
    } else {
        swal.fire("Info", "You have successfully registered.", "success");
        ocisti();
+       location.href="login.html";
    }
   }); 
 }
