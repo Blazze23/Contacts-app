@@ -8,4 +8,6 @@ Apart from saving, editing and removing contacts it has some other cool features
 
 Live preview at: https://savecontactsapp.netlify.app/login.html.
 
+You can login using these credentials, username: Arthur Morgan, password: 123 or you can register new profile.
+
 Keep in mind this app is not responsive, so it should be viewed on larger screens.
