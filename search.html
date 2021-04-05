@@ -103,8 +103,8 @@
                         <tr class="text-center">
                           <th scope="col">Contact Name</th>
                           <th scope="col">Phone Number</th>
-                          <th scope="col">Contact Owner</th>
-                          <th scope="col">Owner Info</th>
+                          <th scope="col">Contact User</th>
+                          <th scope="col">User Info</th>
                         </tr>
                       </thead>
                       <tbody id="kontakti">
@@ -124,45 +124,45 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">Owner information</h5>
+              <h5 class="modal-title" id="modalTitle">User information</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="ownerContacts">
                 <div class="text-center mb-5">
-                    <img src="img/user.jpg" alt="Owner Profile picture" id="ownerImg" class="img-fluid">
+                    <img src="img/user.jpg" alt="User Profile picture" id="ownerImg" class="img-fluid">
                 </div>
                          <form action="" id="forma_izmena">
                              <div class="mb-4">
-                               <label for="username" class="form-label">Owner username:</label><br />
+                               <label for="username" class="form-label">Username:</label><br />
                                <input
                                  type="text"
                                  name="username"
                                  class="form-control"
-                                 placeholder="Owner username..."
+                                 placeholder="Username..."
                                  id="ownerUsername"
                                  disabled
                                />
                              </div>
                              <div class="mb-4">
-                               <label for="email" class="form-label">Owner email:</label
+                               <label for="email" class="form-label">User email:</label
                                ><br />
                                <input
                                  type="text"
                                  name="email"
                                  class="form-control"
-                                 placeholder="Owner email..."
+                                 placeholder="User email..."
                                  id="ownerEmail"
                                  disabled
                                />
                              </div>
                              <div class="mb-4">
-                               <label for="ownerId" class="form-label">Owner ID:</label
+                               <label for="ownerId" class="form-label">User ID:</label
                                ><br />
                                <input
                                  type="text"
                                  name="ownerId"
                                  class="form-control"
-                                 placeholder="Owner ID..."
+                                 placeholder="User ID..."
                                  id="ownerId"
                                  disabled
                                />
@@ -183,7 +183,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="color: #0e3854;" onclick="ocistiModal();"><i class="fas fa-times-circle pe-2"></i></i>Close</button>
-              <button type="button" class="btn btn-warning" onclick="spremiOwnerContacts();" id="btnOwnerContacts"><i class='far fa-address-book pe-2'></i>Owner Contacts</button>
+              <button type="button" class="btn btn-warning" onclick="spremiOwnerContacts();" id="btnOwnerContacts"><i class='far fa-address-book pe-2'></i>User Contacts</button>
             </div>
           </div>
         </div>

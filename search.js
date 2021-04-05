@@ -70,7 +70,7 @@ function spremiOwnerContacts() {
 }
 
 function ownerContacts() {
-    $("#modalTitle").html("Owner Contacts");
+    $("#modalTitle").html("User Contacts");
     $("#tabelaKontakti").empty();
     $.each(kontaktiKorisnika[0], function(key, value) {
        $("#tabelaKontakti").append("<tr><td>"+value.imeiprezime+"</td><td>"+value.telefon+"</td></tr>");
@@ -81,9 +81,9 @@ function ownerContacts() {
 
 function ocistiModal() {
     kontaktiKorisnika = [];
-    $("#modalTitle").html("Owner Information");
+    $("#modalTitle").html("User Information");
     $("#btnOwnerContacts").css("display", "block");
-    $("#ownerContacts").html("<div class='text-center mb-5'><img src='img/user.jpg' alt='Owner Profile picture' id='ownerImg' class='img-fluid'></div><form action='' id='forma_izmena'><div class='mb-4'><label for='username' class='form-labe'>Owner username:</label><br /><input type='text' name='username' class='form-control' placeholder='Owner username...' id='ownerUsername' disabled/></div><div class='mb-4'><label for='email' class='form-label'>Owner email:</label><br /><input type='text' name='email' class='form-control' placeholder='Owner email...' id='ownerEmail'disabled/></div><div class='mb-4'><label for='ownerId' class='form-label'>Owner ID:</label><br /><input type='text' name='ownerId' class='form-control' placeholder='Owner ID...' id='ownerId'disabled/></div><div class='mb-4'><label for='nubmerOfContacts' class='form-label'>Number of Contacts:</label><br /><input type='text' name='nubmerOfContacts'class='form-control' placeholder='Number of Contacts...' id='nubmerOfContacts'disabled/></div></form></div>");
+    $("#ownerContacts").html("<div class='text-center mb-5'><img src='img/user.jpg' alt='User Profile picture' id='ownerImg' class='img-fluid'></div><form action='' id='forma_izmena'><div class='mb-4'><label for='username' class='form-labe'>Username:</label><br /><input type='text' name='username' class='form-control' placeholder='Username...' id='ownerUsername' disabled/></div><div class='mb-4'><label for='email' class='form-label'>User email:</label><br /><input type='text' name='email' class='form-control' placeholder='User email...' id='ownerEmail'disabled/></div><div class='mb-4'><label for='ownerId' class='form-label'>User ID:</label><br /><input type='text' name='ownerId' class='form-control' placeholder='User ID...' id='ownerId'disabled/></div><div class='mb-4'><label for='nubmerOfContacts' class='form-label'>Number of Contacts:</label><br /><input type='text' name='nubmerOfContacts'class='form-control' placeholder='Number of Contacts...' id='nubmerOfContacts'disabled/></div></form></div>");
 }
 
 // pretraga rucno
@@ -143,8 +143,15 @@ function postaviMarker(lat, lon, id) {
         map: map,
         title: id
     });
+    let infoWindow = new google.maps.InfoWindow({
+        content: "<h4>User ID: "+id+"</h4><button class='btn btn-warning mt-3' style='color: #0e3854' onclick='ownerInfo(" +id+")'><i class='fas fa-info-circle pe-2'></i>User Info</button>"
+    })
+    marker.addListener('click', function() {
+       infoWindow.open(map, marker);
+    });
     markers.push(marker);
 }
+
 
 function ucitajLokacijeKorisnika() {
     $.getJSON("https://obrada.in.rs/api/korisniciInfoLokacija/"+token, function(data) {
